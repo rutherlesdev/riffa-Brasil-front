@@ -1,0 +1,33 @@
+<div class="modal-body">
+  <h4>Request Password Reset
+    <div class="close pointer" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </div>
+  </h4>
+
+  <form #form="ngForm" (ngSubmit)="requestReset()">
+
+    <div class="card mb-3 bg-light">
+      <div class="card-body">Enter a valid user email to get your password ereset token sent to you</div>
+    </div>
+
+    <form-field label="Email" size="lg">
+      <input inputRef type="email" name="email" #email="ngModel" email required [(ngModel)]="model.email">
+      <div invalid *ngIf="email.touched && email.invalid">
+        <p *ngIf="email?.errors.required">required</p>
+        <p *ngIf="email?.errors.required">enter a valid email</p>
+      </div>
+    </form-field>
+
+    <div class="call-to-action">
+      <button type="submit" class="btn btn-primary btn-lg">Reset Password</button>
+
+      <div class="options"> Already have an account?
+        <strong class="text-lg text-primary pointer" (click)="openLogin()">Signin</strong>
+      </div>
+    </div>
+  </form>
+
+
+
+</div>

@@ -1,0 +1,89 @@
+:host {
+  .image-wrapper {
+    display: flex;
+
+    .images {
+      display: flex;
+      flex-direction: column;
+      padding: 0 10px;
+
+      .img {
+        width: 60px;
+        height: 60px;
+        border: 1px solid grey;
+        background-size: contain !important;
+        margin: 3px 0;
+
+        &.active {
+          background-blend-mode: overlay;
+          background-color: rgba(black, 0.5);
+        }
+      }
+    }
+
+    .mainImage {
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+
+  .price {
+    display: flex;
+
+    .no-good {
+      text-decoration: line-through;
+    }
+  }
+
+  .more-detail {
+    width: 75%;
+  }
+
+
+  #play-raffle {
+    .tutorial {
+      background: #f2f2f2;
+      padding: 15px 10px;
+      border-radius: 4px;
+      font-size: 14px;
+
+      ul {
+        padding-inline-start: 17px;
+
+        li {
+          margin: 10px 0;
+
+          .prev-user-selected,
+          .prev-selected,
+          .current-user-selected {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            font-size: 14px;
+            margin-left: 5px;
+          }
+
+          .prev-selected {
+            background: #d3d3d3;
+          }
+        }
+      }
+    }
+
+  }
+
+  ::ng-deep {
+    .tab-content {
+      border: 1px solid #dde2e5;
+      border-top: none;
+      border-radius: 4px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+
+  .txt-lg {
+    font-size: 16px;
+  }
+}

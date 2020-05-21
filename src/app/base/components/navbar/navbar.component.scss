@@ -1,0 +1,24 @@
+:host {
+  .navbar-nav {
+    align-items: center;
+
+    .nav-link {
+      font-size: 20px;
+      font-weight: 200;
+    }
+  }
+
+  .profile {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+
+    &.dropdown-toggle::after {
+      display: none;
+    }
+  }
+
+  .navbar-toggler {
+    border-color: white;
+  }
+}

@@ -1,0 +1,8 @@
+<div class="input-group mb-3">
+  <input type="text" class="form-control" [placeholder]="placeholder" (keyup)="search.next($event.target.value)">
+  <div class="input-group-append">
+    <span class="input-group-text">
+      <i class="fa fa-fw fa-search"></i>
+    </span>
+  </div>
+</div>

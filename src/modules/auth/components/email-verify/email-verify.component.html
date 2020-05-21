@@ -1,0 +1,8 @@
+<app-spinner [isLoading]="loading">
+  <div class="p-4 text-center">
+    <h3>Email Verification</h3>
+    <p [innerHTML]="msg">
+    </p>
+    <button class="btn btn-secondary" (click)="authProps.closeModal()">Continue</button>
+  </div>
+</app-spinner>

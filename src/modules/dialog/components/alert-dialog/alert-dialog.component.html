@@ -1,0 +1,18 @@
+<div class="alert-content my-4">
+  <div class="container">
+    <h4 *ngIf="config?.heading" [innerHTML]="config?.heading"></h4>
+
+    <span *ngIf="config?.body" class="text" [innerHTML]="config?.body"></span>
+
+    <i class="big {{config?.icon}}" *ngIf="config?.icon"></i>
+
+    <span *ngIf="config?.footer" class="text" [innerHTML]="config?.footer"></span>
+
+    <div class="buttons" [ngClass]="{'column': buttons?.columnAlign}">
+      <button class="full mt10 btn btn-{{item.color}}" *ngFor="let item of buttons?.buttons"
+        (click)="onClick(item.eventname)">
+        {{item.text}}
+      </button>
+    </div>
+  </div>
+</div>

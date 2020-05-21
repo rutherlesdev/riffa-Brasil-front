@@ -1,0 +1,55 @@
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+
+$theme-colors: ("primary": #ff4081,
+  "secondary": #363cfa,
+  facebook: #3b5998,
+  google: #d34836, // "success": yellow,
+  // "info": blue,
+  warning: #ffee54,
+  // "danger": "..",
+  // "light": "..",
+  // "dark": "..",
+);
+$font-family-base: 'Montserrat';
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+.gradient-bg {
+  background-image: linear-gradient(to bottom, map-get($theme-colors, secondary) 10%, rgba(map-get($theme-colors, primary), 0.8) 60%, white 80%);
+}
+
+.pointer {
+  cursor: pointer !important;
+}
+
+html {
+  font-family: $font-family-base !important;
+}
+
+.body {
+  position: relative;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+
+  &.modal-open {
+    overflow: hidden;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 0;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(map-get($theme-colors, dark), 0.4);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: map-get($theme-colors, dark);
+  border-radius: 0;
+}

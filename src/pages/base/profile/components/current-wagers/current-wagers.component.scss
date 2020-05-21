@@ -1,0 +1,17 @@
+:host {
+  display: block;
+
+  app-table {
+    ::ng-deep {
+
+      th,
+      td {
+        text-align: center;
+      }
+
+      td {
+        padding: 5px;
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+:host {
+  .list-group-item {
+    display: flex;
+
+    .image {
+      width: 80px;
+      height: 80px;
+      border-radius: 4px;
+    }
+
+    .detail {
+      padding-left: 20px;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      width: 200px;
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<div class="form-group" [ngClass]="{'row': row}">
+  <label *ngIf="label" [for]="input.element.id" [ngClass]="{'col-sm-3 col-form-label' : row}">{{label}}</label>
+  <div [ngClass]="{'col-sm-10': row}">
+    <div class="input-group">
+      <div class="input-group-prepend" *ngIf="prefix">
+        <span class="input-group-text" id="basic-addon1">
+          <ng-content select="[prefix]"></ng-content>
+        </span>
+      </div>
+      <ng-content></ng-content>
+      <div class="input-group-append" *ngIf="suffix">
+        <span class="input-group-text">
+          <ng-content select="[suffix]"></ng-content>
+        </span>
+      </div>
+    </div>
+    <small class="form-text text-right text-danger">
+      <ng-content select="[invalid]"></ng-content>
+    </small>
+
+    <small class="form-text text-right text-primary">
+      <ng-content select="[valid]"></ng-content>
+    </small>
+  </div>
+</div>

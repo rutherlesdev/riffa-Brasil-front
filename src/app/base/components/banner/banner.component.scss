@@ -1,0 +1,50 @@
+@import '../../../../styles.scss';
+
+:host {
+  display: flex;
+  width: 100%;
+  height: auto;
+  background: rgba(map-get($theme-colors, primary), 0.05);
+  padding: 20px;
+
+  @include media-breakpoint-only(xs) {
+    flex-direction: column-reverse;
+  }
+
+  .left {
+    ul {
+      margin: 0;
+      padding: 0;
+
+      li {
+        list-style: none;
+      }
+    }
+  }
+
+  .right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    flex-wrap: wrap;
+
+    .banner-image {
+      height: 60px;
+      padding: 0 15px;
+
+      img {
+        height: 100%;
+      }
+    }
+
+    @include media-breakpoint-only(xs) {
+      justify-content: center;
+      margin-bottom: 15px;
+
+      .banner-image {
+        height: 40px;
+      }
+    }
+  }
+}

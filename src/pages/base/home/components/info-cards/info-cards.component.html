@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-sm-12 col-md-6 my-2">
+    <div class="card bg-secondary" *ngIf="homeInfoLeftContent">
+      <div class="card-body">
+        <h5 class="card-title mb-3">{{homeInfoLeftContent.title}}</h5>
+        <h6 class="card-subtitle mb-2 text-light">{{homeInfoLeftContent.subtitle}}</h6>
+        <p class="card-text">{{homeInfoLeftContent.content | slice: 0: 350}}</p>
+        <a [href]="homeInfoLeftContent.href" class="btn btn-primary" angulartics2On="click" angularticsAction="ViewLiveRaffles" angularticsLabel="PlayNowButton" [angularticsCategory]="'PromoBox'">Play Now</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-12 col-md-6 my-2">
+    <div class="card bg-secondary" *ngIf="homeInfoRightContent">
+      <div class="card-body">
+        <h5 class="card-title mb-3">{{homeInfoRightContent.title}}</h5>
+        <h6 class="card-subtitle mb-2 text-light">{{homeInfoRightContent.subtitle}}</h6>
+        <p class="card-text">{{homeInfoRightContent.content | slice: 0: 350}}</p>
+        <a [href]="homeInfoRightContent.href" class="btn btn-primary" angulartics2On="click" angularticsAction="ViewLiveRaffles" angularticsLabel="TryLuckyDipButton" [angularticsCategory]="'PromoBox'">Try Lucky Dip</a>
+      </div>
+    </div>
+  </div>
+</div>

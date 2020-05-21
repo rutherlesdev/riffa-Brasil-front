@@ -1,0 +1,41 @@
+<div class="modal-body">
+  <h4>Signin - Admin Only
+    <div class="close pointer" (click)="authProps.closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </div>
+  </h4>
+
+  <form #form="ngForm" (ngSubmit)="login()">
+    <form-field label="Email" size="lg">
+      <input inputRef type="email" name="email" #email="ngModel" email required [(ngModel)]="model.email">
+      <div invalid *ngIf="email.touched && email.invalid">
+        <p *ngIf="email?.errors.required">required</p>
+        <p *ngIf="email?.errors.required">enter a valid email</p>
+      </div>
+    </form-field>
+
+    <form-field label="Password" size="lg">
+      <input inputRef type="password" name="password" #password="ngModel" required [(ngModel)]="model.password">
+      <div invalid *ngIf="password.touched && password.invalid">
+        <p *ngIf="password?.errors.required">required</p>
+      </div>
+    </form-field>
+
+    <div class="call-to-action">
+      <button type="submit" [btnStatus]="loading" class="btn btn-primary btn-lg" (click)="login()">Sign In</button>
+
+      <!-- <small class="options"> or you can sign in with</small>
+
+      <button type="button" [btnStatus]="authProps.fbLoading" class="btn btn-facebook btn-lg"
+        (click)="authProps.fbLogin()">Facebook</button>
+      <button type="button" [btnStatus]="authProps.googleLoading" class="btn btn-google btn-lg"
+        (click)="authProps.googleLogin()">Google</button>
+
+      <small class="options pointer" (click)="forgot()">Forgot Password? </small> -->
+
+    </div>
+  </form>
+
+
+
+</div>

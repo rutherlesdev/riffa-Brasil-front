@@ -1,0 +1,52 @@
+@import "../../../../styles.scss";
+
+:host {
+  .modal-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h4 {
+      text-align: center;
+    }
+
+    form {
+      padding: 20px 0;
+
+      .promo {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 15px 10px;
+        background-color: map-get($theme-colors, danger);
+        margin-bottom: 20px;
+        color: white;
+        border-radius: 12px;
+        border: 2px dashed yellow;
+      }
+
+      .call-to-action {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .social {
+          .btn {
+            width: 100%;
+          }
+        }
+      }
+
+      .options {
+        margin: 10px;
+        text-align: center;
+      }
+    }
+
+    .close {
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+}

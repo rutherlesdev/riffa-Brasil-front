@@ -1,0 +1,17 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-3">
+      <app-profile-card></app-profile-card>
+    </div>
+    <div class="col-md-9">
+      <div class="product-wrapper" *ngIf="currentUser.contact.raffleDraws">
+        <h4>You are watching {{currentUser.contact.raffleDraws.length}} upcoming raffles</h4>
+        <div class="h-scroll">
+          <app-product-card *ngFor="let item of currentUser.contact.raffleDraws" [raffle]="item"></app-product-card>
+        </div>
+      </div>
+      <app-current-wagers class="mb-2"></app-current-wagers>
+      <app-wager-history></app-wager-history>
+    </div>
+  </div>
+</div>

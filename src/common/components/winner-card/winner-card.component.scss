@@ -1,0 +1,33 @@
+@import "../../../styles.scss";
+
+:host {
+  margin-bottom: 20px;
+  display: block;
+
+  .card-body {
+    text-align: center;
+  }
+
+  .card-title {
+    text-transform: capitalize;
+  }
+
+  .card {
+    .card-img-top {
+      height: 150px;
+      background-color: map-get($theme-colors, gray);
+      position: relative;
+      background-size: cover !important;
+      background-color: #d3d3d3;
+
+      .profile {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        top: 100px;
+        border-radius: 50%;
+        margin: auto;
+      }
+    }
+  }
+}

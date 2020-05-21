@@ -1,0 +1,121 @@
+<div class="wrapper p-4">
+  <h3 class="mb-3">{{contact?.id ? 'Edit' : 'Add New'}} contact</h3>
+
+  <form #form="ngForm" novalidate>
+
+    <div class="row">
+      <div class="col-md-3">
+        <div class="profile-image" [imageLoader]="profileImage.url" (mouseenter)="profileImage.show = true"
+          (mouseleave)="profileImage.show = false">
+
+          <div class="actions">
+            <label *ngIf="!profileImage.url" class="btn btn-info mr-2"><i class="fa fa-pencil">
+                <input type="file" style="display: none;" (change)="addImage($event)" angulartics2On="click" angularticsAction="AddProfileImage" angularticsLabel="ProfileImage" [angularticsCategory]="'ProfilePage'"></i>
+            </label>
+            <label *ngIf="profileImage.url" (click)="deleteFile(profileImage)" class="btn btn-danger ml-2"><i
+                class="fa fa-trash-o"></i></label>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+
+        <div class="row">
+          <div class="col">
+            <form-field label="Title">
+              <select inputRef name="title" [(ngModel)]="contact.title" #title="ngModel" required>
+                <option [value]="item" *ngFor="let item of titles">{{item}}</option>
+              </select>
+              <div invalid *ngIf="title.dirty && title.invalid">
+                <span *ngIf="title?.errors?.required">required</span>
+              </div>
+            </form-field>
+          </div>
+          <div class="col">
+            <form-field label="First Name">
+              <input inputRef name="firstName" [(ngModel)]="contact.firstName" #firstName="ngModel" required>
+              <div invalid *ngIf="firstName.dirty && firstName.invalid">
+                <span *ngIf="firstName?.errors?.required">required</span>
+              </div>
+            </form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <form-field label="Other Name">
+              <input inputRef name="otherNames" [(ngModel)]="contact.otherNames" #otherNames="ngModel">
+            </form-field>
+          </div>
+          <div class="col">
+            <form-field label="Last Name">
+              <input inputRef name="lastName" [(ngModel)]="contact.lastName" #lastName="ngModel" required>
+              <div invalid *ngIf="lastName.dirty && lastName.invalid">
+                <span *ngIf="lastName?.errors?.required">required</span>
+              </div>
+            </form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form-field label="Bio">
+      <textarea inputRef name="bio" [(ngModel)]="contact.bio"></textarea>
+    </form-field>
+
+    <div class="row">
+      <div class="col">
+        <form-field label="Email">
+          <input inputRef name="email" [(ngModel)]="contact.email" #email="ngModel" required email>
+          <div invalid *ngIf="email.dirty && email.invalid">
+            <span *ngIf="email?.errors?.required">required</span>
+            <span *ngIf="email?.errors?.email">not a valid email</span>
+          </div>
+        </form-field>
+      </div>
+      <div class="col">
+        <form-field label="Telephone">
+          <input inputRef name="phone" [(ngModel)]="contact.phone" #phone="ngModel" phone>
+          <div invalid *ngIf="phone.dirty && phone.invalid">
+            <span *ngIf="phone?.errors?.phone">not a valid phone number</span>
+          </div>
+        </form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <form-field label="Address">
+          <input inputRef name="address" [(ngModel)]="contact.address" #address="ngModel" required>
+          <div invalid *ngIf="address.dirty && address.invalid">
+            <span *ngIf="address?.errors?.required">required</span>
+          </div>
+        </form-field>
+      </div>
+      <div class="col">
+        <form-field label="City">
+          <input inputRef name="town" [(ngModel)]="contact.town" #phone="ngModel">
+        </form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <form-field label="Postal Code">
+          <input inputRef name="postalCode" [(ngModel)]="contact.postalCode" #postalCode="ngModel" required>
+          <div invalid *ngIf="postalCode.dirty && postalCode.invalid">
+            <span *ngIf="postalCode?.errors?.required">required</span>
+          </div>
+        </form-field>
+      </div>
+      <div class="col">
+        <form-field label="Country">
+          <input inputRef name="country" [(ngModel)]="contact.country" #country="ngModel">
+        </form-field>
+      </div>
+    </div>
+  </form>
+
+  <div class="footer text-right mt-3">
+    <button class="btn btn-primary mr-2" [btnStatus]="loading" [disabled]="form.invalid" (click)="save()" angulartics2On="click" angularticsAction="UpdateProfile" angularticsLabel="SaveProfileButton" [angularticsCategory]="'ProfilePage'">Save</button>
+    <button class="btn btn-dark" (click)="closeModal()">Close</button>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<div style="display: block">
+  <h3 class="text-dark">Players Saved</h3>
+  <canvas *ngIf="show" baseChart [datasets]="lineChartData.datasets" [labels]="lineChartData.labels"
+    [options]="lineChartData.options" [chartType]="'line'">
+  </canvas>
+</div>

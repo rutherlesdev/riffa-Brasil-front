@@ -1,0 +1,11 @@
+<div class="grid mb-3" *ngIf="currentDraw && !loading">
+  <div *ngFor="let entry of currentDraw.entries; let i = index" class="grid-item" [ngClass]="{
+    'selected': getSelectedNumbers(entry.value),
+    'completed': entry.status === 1,
+    'user-selected': entry.status === 2
+  }" [ngStyle]="{ 'grid-row': getRow(i), 'grid-column': entry.column }" (click)="selectNumber(entry.value)" angulartics2On="click" angularticsAction="ChooseRaffleNumbers" angularticsLabel="RaffleNumbers" [angularticsCategory]="'RaffleNumbersGrid'">
+    <span>{{ entry.value }}</span>
+  </div>
+</div>
+<ngb-pagination *ngIf="max > 100" maxSize="5" [collectionSize]="max" pageSize="100" (pageChange)="onPageChange($event)" angulartics2On="click" angularticsAction="NextSetOfRaffleNumbers" angularticsLabel="PaginationButton" [angularticsCategory]="'RafflePagination'">
+</ngb-pagination>

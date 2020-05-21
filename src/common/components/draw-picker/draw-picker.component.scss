@@ -1,0 +1,80 @@
+@import "../../../styles.scss";
+
+.grid {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  border: 1px solid #8a8e92;
+  border-radius: 4px;
+
+  .grid-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+
+    @include media-breakpoint-only(xs) {
+      padding: 1px;
+    }
+
+    color: map-get($theme-colors, dark);
+    cursor: pointer;
+    border-top: 1px solid #dfdfdf;
+    border-left: 1px solid #dfdfdf;
+
+    &:nth-child(-n + 2) {
+      border-top: none;
+    }
+
+
+    span {
+      width: 30px;
+      height: 30px;
+      border-width: 1px;
+      border-radius: 50%;
+      font-size: 16px;
+
+      @include media-breakpoint-only(xs) {
+        font-size: 13px
+      }
+
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .events {
+      display: flex;
+
+      .event {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        margin: 0 2px;
+      }
+    }
+  }
+
+  .selected {
+    span {
+      background: map-get($theme-colors, secondary);
+      color: white;
+    }
+  }
+
+  .completed {
+    span {
+      background: #d3d3d3;
+      color: map-get($theme-colors, secondary);
+    }
+  }
+
+  .user-selected {
+    span {
+      background: map-get($theme-colors, danger);
+      color: white;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+:host {
+  .product-wrapper {
+    display: flex;
+    overflow: hidden;
+    width: inherit;
+    flex-direction: column;
+
+    .h-scroll {
+      display: flex;
+      overflow-x: auto;
+      width: 100%;
+
+      ::ng-deep {
+        app-product-card {
+          margin: 0 10px 20px;
+          min-width: 220px;
+          max-width: 221px;
+          display: flex;
+
+          &:first-of-type {
+            margin-left: 0;
+          }
+
+          &:last-of-type {
+            margin-right: 0;
+          }
+
+          .card {
+            width: 100%;
+
+            .card-title {
+              overflow: hidden;
+              white-space: nowrap;
+            }
+          }
+        }
+      }
+    }
+  }
+}

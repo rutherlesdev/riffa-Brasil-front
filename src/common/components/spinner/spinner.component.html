@@ -1,0 +1,5 @@
+<div class="loading-wrapper" *ngIf="isLoading">
+  <div class="loader" *ngIf="!slingo">
+  </div>
+</div>
+<ng-content *ngIf="!isLoading"></ng-content>

@@ -1,0 +1,12 @@
+<!-- <div class="left">
+  <ul>
+    <li *ngFor="let item of bannerNav">
+      <a class="text-secondary" [href]="item.href" target="_blank">{{item.title}}</a>
+    </li>
+  </ul>
+</div> -->
+<div class="right">
+  <a class="banner-image" *ngFor="let item of bannerImages" [href]="item.link" target="_blank">
+    <img [src]="item.image" alt="">
+  </a>
+</div>

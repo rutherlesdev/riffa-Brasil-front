@@ -1,0 +1,36 @@
+:host {
+  .modal-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h4 {
+      text-align: center;
+    }
+
+    form {
+      padding: 20px 0;
+
+      .call-to-action {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .btn {
+          margin: 5px 0;
+        }
+      }
+
+      .options {
+        margin: 10px;
+        text-align: center;
+      }
+    }
+
+    .close {
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+}

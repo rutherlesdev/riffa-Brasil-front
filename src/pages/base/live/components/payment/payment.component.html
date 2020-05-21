@@ -1,0 +1,69 @@
+<div class="wrapper m-4 p-2">
+  <h4 class="mb-3">Pay Now to Secure Numbers</h4>
+
+  <div class="item-details mt-4 p-4 text-secondary card">
+    <h6>
+      You have chosen <b>{{entries.length}}</b> numbers in this raffle.
+      <br> Your total is<b> {{amount | ccurrency}}</b>
+    </h6>
+
+    <div class="discount text-danger" *ngIf="hasInviteDiscount">
+      <hr>
+      <ng-container *ngIf="!discountClaimed">
+        <h6>You have a £5 discount, do you want to claim it?</h6>
+        <button type="button" (click)="claimDiscount()" class="btn btn-secondary mr-4" [btnStatus]="loading" angulartics2On="click" angularticsAction="ClaimDiscount" angularticsLabel="DiscountButton" [angularticsCategory]="'ClaimDiscountSection'">
+          Claim Discount
+        </button>
+      </ng-container>
+      <ng-container *ngIf="discountClaimed">
+        <h6 class="text-danger">You have claimed your discount!</h6>
+      </ng-container>
+
+
+    </div>
+  </div>
+
+  <app-progress-bar class="mt-1 mb-1" [value]="(progress/180000) * 100">
+  </app-progress-bar>
+
+  <div class="stripe-image my-3">
+    <img src="./assets/images/stripe.png" alt="">
+  </div>
+
+
+  <form (ngSubmit)="buy()" #form="ngForm">
+    <form-field label="Name">
+      <input inputRef [(ngModel)]="name" name="name" placeholder="Jane Doe">
+    </form-field>
+
+    <div class="card-wrapper mt-3 mb-5">
+      <label>Enter card details</label>
+      <div id="card-element"></div>
+    </div>
+
+    <div class="text-right">
+      <button type="submit" class="btn btn-secondary mr-4" [btnStatus]="loading" angulartics2On="click" angularticsAction="RafflePay" angularticsLabel="RafflePayButton" [angularticsCategory]="'RafflePayPopUp'">
+        PAY
+      </button>
+      <button type="button" class="btn btn-outline-primary" (click)="closeModal()" angulartics2On="click" angularticsAction="RaffleCancel" angularticsLabel="RaffleCancelButton" [angularticsCategory]="'RafflePayPopUp'">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>
+
+
+
+<!-- <label>Enter Address details</label>
+    <form-field>
+      <input inputRef [(ngModel)]="address.addressLine1" name="name" placeholder="Address line 1">
+    </form-field>
+    <form-field>
+      <input inputRef [(ngModel)]="address.addressLine2" name="name" placeholder="Address line 2">
+    </form-field>
+    <form-field>
+      <input inputRef [(ngModel)]="address.city" name="name" placeholder="City">
+    </form-field>
+    <form-field>
+      <input inputRef [(ngModel)]="address.postCode" name="name" placeholder="Post Code">
+    </form-field> -->

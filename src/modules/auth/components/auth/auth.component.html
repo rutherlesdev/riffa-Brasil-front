@@ -1,0 +1,23 @@
+<ng-container [ngSwitch]="form">
+  <ng-container *ngSwitchCase="'signup'">
+    <app-signup></app-signup>
+  </ng-container>
+  <ng-container *ngSwitchCase="'signup-only'">
+    <app-signup-only></app-signup-only>
+  </ng-container>
+  <ng-container *ngSwitchCase="'forgot'">
+    <app-forgot></app-forgot>
+  </ng-container>
+  <ng-container *ngSwitchCase="'email-verify'">
+    <app-email-verify></app-email-verify>
+  </ng-container>
+  <ng-container *ngSwitchCase="'password-reset'">
+    <app-reset></app-reset>
+  </ng-container>
+  <ng-container *ngSwitchCase="'login-admin'">
+    <app-login-admin></app-login-admin>
+  </ng-container>
+  <ng-container *ngSwitchDefault>
+    <app-login></app-login>
+  </ng-container>
+</ng-container>

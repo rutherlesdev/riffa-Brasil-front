@@ -1,0 +1,32 @@
+:host {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  .row {
+    .col {
+      padding: 0;
+
+      .dropdown {
+        .full {
+          width: 100%;
+
+          &.sort {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+          }
+
+          &.filter {
+            border-radius: 0;
+            border-bottom-left-radius: 0;
+          }
+        }
+      }
+
+      .go {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
+}

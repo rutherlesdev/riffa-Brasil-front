@@ -1,0 +1,18 @@
+<!-- <div class="overlay" (click)="onOverlayClicked()">
+  <div class="dialog" (click)="onDialogClicked($event)">
+    <ng-template dialogInsertion>
+
+    </ng-template>
+  </div>
+</div> -->
+
+
+<div class="modal fade show" (click)="onOverlayClicked()" style="display: block">
+  <div class="modal-dialog modal-{{size}}" (click)="onDialogClicked($event)">
+    <div class="modal-content">
+      <ng-template dialogInsertion>
+
+      </ng-template>
+    </div>
+  </div>
+</div>

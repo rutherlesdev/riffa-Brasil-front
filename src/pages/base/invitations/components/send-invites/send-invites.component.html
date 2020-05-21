@@ -1,0 +1,32 @@
+<div class="card border-top-0">
+  <div class="card-body">
+    <form-field suffix="true">
+      <input type="email" placeholder="Type recipient email and click add button" inputRef [(ngModel)]="email"
+        name="email" #emailRef="ngModel">
+      <i suffix class="fa fa-plus pointer" (click)="emails.push(email); emailRef.reset()" angulartics2On="click" angularticsAction="AddInviteEmail" angularticsLabel="AddInviteEmailButton" [angularticsCategory]="'SendInvitesPage'"></i>
+    </form-field>
+
+    <div class="display-emails my-3">
+      <span class="bg-info text-light mx-1 px-2 py-1 rounded" *ngFor="let item of emails">{{item}}
+        <span class="mx-1 text-light pointer" (click)="removeEmail(item)">x</span>
+      </span>
+    </div>
+
+    <hr class="my-3">
+    <form-field prefix="true" suffix="true">
+      <span prefix>Invitation link</span>
+      <input type="text" id="invite-link" class="bg-light" readonly inputRef [(ngModel)]="invite.link" name="link"
+        #linkInput="ngModel" #linkRef>
+      <span suffix *ngIf="invite.link" (click)="copy(invite.link)" angulartics2On="click" angularticsAction="CopyInviteLink" angularticsLabel="CopyInviteLinkButton" [angularticsCategory]="'SendInvitesPage'">Copy</span>
+      <span suffix class="text-secondary" *ngIf="!invite.link" (click)="getInviteLink()" angulartics2On="click" angularticsAction="GenerateInviteLink" angularticsLabel="GetInviteLinkButton" [angularticsCategory]="'SendInvitesPage'">Get Referral Link</span>
+    </form-field>
+
+    <form-field>
+      <textarea inputRef name="emailContent" id="emailContent" [(ngModel)]="invite.content"></textarea>
+    </form-field>
+
+    <button type="button" class="btn btn-primary" [disabled]="emails.length === 0" (click)="addInvitation()" angulartics2On="click" angularticsAction="SendInviteEmail" angularticsLabel="SendInviteEmailButton" [angularticsCategory]="'SendInvitesPage'">
+      Send Invites
+    </button>
+  </div>
+</div>

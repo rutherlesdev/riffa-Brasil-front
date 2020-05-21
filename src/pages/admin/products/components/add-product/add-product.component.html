@@ -1,0 +1,36 @@
+<div class="wrapper p-4">
+  <h3 class="mb-3">{{product?.id ? 'Edit' : 'Add New'}} Product</h3>
+
+  <form #form="ngForm">
+    <form-field label="Name">
+      <input inputRef name="name" [(ngModel)]="product.name" #name="ngModel" required>
+      <div invalid *ngIf="name.dirty && name.invalid">
+        <span *ngIf="name?.errors?.required">required</span>
+      </div>
+    </form-field>
+    <td-text-editor [value]="product.description" #textEditor></td-text-editor>
+
+    <hr />
+
+    <div class="product-images">
+      <label class="btn btn-info">
+        Add Image&hellip; <input type="file" style="display: none;" multiple (change)="addImage($event)">
+      </label>
+      <div class="row mt-2 p-2">
+        <div class="col col-sm-4 col-md-2" *ngFor="let item of images; let i = index" (mouseenter)="item.show = true"
+          (mouseleave)="item.show = false">
+          <img class="image" [src]="item.url">
+          <div class="actions" *ngIf="item.show" (click)="deleteFile(item, i)">
+            <i class="fa fa-trash-o"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+  <div class="footer text-right mt-3">
+    <button class="btn btn-primary mr-2" [btnStatus]="loading" [disabled]="form.invalid" (click)="save()">Save</button>
+    <button class="btn btn-dark" (click)="closeModal()">Close</button>
+  </div>
+</div>

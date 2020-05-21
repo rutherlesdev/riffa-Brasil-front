@@ -1,0 +1,49 @@
+<div class="wrapper p-4">
+  <h3 class="mb-3">{{content?.id ? 'Edit' : 'Add New'}} content</h3>
+
+  <form #form="ngForm">
+    <form-field label="Content Type">
+      <select name="types" inputRef #name="ngModel" [(ngModel)]="contentModel.type">
+        <option [value]="item" *ngFor="let item of contentTypes">{{item}}</option>
+      </select>
+      <!-- <input inputRef name="name" [(ngModel)]="content.type" #name="ngModel" required> -->
+      <div invalid *ngIf="name.dirty && name.invalid">
+        <span *ngIf="name?.errors?.required">required</span>
+      </div>
+    </form-field>
+
+    <form-field label="Title">
+      <input inputRef name="title" [(ngModel)]="contentModel.title" #title="ngModel" required>
+      <div invalid *ngIf="title.dirty && title.invalid">
+        <span *ngIf="title?.errors?.required">required</span>
+      </div>
+    </form-field>
+
+    <form-field label="Subtitle">
+      <input inputRef name="subtitle" [(ngModel)]="contentModel.subtitle" #subtitle="ngModel">
+      <div invalid *ngIf="subtitle.dirty && subtitle.invalid">
+        <span *ngIf="subtitle?.errors?.required">required</span>
+      </div>
+    </form-field>
+
+    <form-field label="Link">
+      <input inputRef name="href" [(ngModel)]="contentModel.href" #href="ngModel">
+      <div invalid *ngIf="href.dirty && href.invalid">
+        <span *ngIf="href?.errors?.required">required</span>
+      </div>
+    </form-field>
+
+    <form-field label="Content">
+      <textarea inputRef name="content" [(ngModel)]="contentModel.content" #content="ngModel"></textarea>
+      <div invalid *ngIf="content.dirty && content.invalid">
+        <span *ngIf="content?.errors?.required">required</span>
+      </div>
+    </form-field>
+  </form>
+
+  <div class="footer text-right mt-3">
+    <button class="btn btn-primary mr-2" [btnStatus]="loading" [disabled]="form.invalid" (click)="save()">Save</button>
+    <button class="btn btn-dark" (click)="closeModal()">Close</button>
+  </div>
+
+</div>

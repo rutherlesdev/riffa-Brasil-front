@@ -1,0 +1,29 @@
+<div class="container-fluid bg-white my-3">
+
+  <div class="jumbotron">
+    <h4>Use Winner Dummy Data</h4>
+    <button class="btn btn-secondary" (click)="toggleDummyWinnerData()">Toggle Use of Dummy Winners Data</button>
+  </div>
+
+  <button type="button" class="btn btn-primary" (click)="addContent()">Add Content</button>
+
+  <app-spinner class="mt-3" [isLoading]="loading">
+
+    <ng-container *ngIf="contents && contents.length > 0">
+      <app-table [config]="{showSelect: false}" [data]="contents" [headers]="tableHeaders" [actions]="tableActions">
+      </app-table>
+      <ngb-pagination maxSize="5" [collectionSize]="contentsBK.length" (pageChange)="onPageChange($event)"
+        aria-label="Default pagination">
+      </ngb-pagination>
+    </ng-container>
+
+    <ng-container *ngIf="contents && contents.length === 0">
+      <div class="jumbotron">
+        <h4>Empty</h4>
+        <p class="lead text-dark">No Content to display</p>
+      </div>
+    </ng-container>
+
+  </app-spinner>
+
+</div>

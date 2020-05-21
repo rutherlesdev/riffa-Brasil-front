@@ -1,0 +1,51 @@
+<div class="table-responsive" *ngIf="tableData && tableData.length> 0">
+  <table class="table table-striped table-hover border">
+    <thead>
+      <tr>
+        <th *ngIf="config.showSelect" class="select">
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" (click)="selectAll($event);">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description"></span>
+          </label>
+        </th>
+
+        <th *ngFor="let header of headers" (click)="changeSorting(header)" [ngClass]="selectedClass(header)">{{header.formatted_text
+          ? header.formatted_text : header.text}}</th>
+        <th *ngIf="actions.length > 0" class="actions"> Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let data of tableData  | orderBy : convertSorting() | slice: sliceStart : sliceEnd; let odd=odd; let even=even; let i = index;">
+        <td *ngIf="config.showSelect" class="select">
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" [checked]="data.check"
+              (click)="selectItem($event, data);">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description"></span>
+          </label>
+        </td>
+
+        <td *ngFor="let header of headers" [ngClass]="{'has-image': header.type === 'image'}">
+          <div [ngSwitch]="header.type">
+            <div *ngSwitchCase="'image'" class="image"
+              [style.background-image]="'url(' + byString(data, header.text) + ')'"></div>
+            <div *ngSwitchDefault [innerHTML]="byString(data, header.text) | format: header.type"> </div>
+          </div>
+        </td>
+
+        <td *ngIf="actions.length > 0" class="actions">
+          <ul class="icons">
+            <li *ngFor="let action of actions" (click)="action.event(data, i)">
+              <a [class]="action.color" data-toggle="tooltip" data-placement="top" [title]="action.text">
+                <i class="fa fa-{{action.icon}}"></i>
+              </a>
+            </li>
+          </ul>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

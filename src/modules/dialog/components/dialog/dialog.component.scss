@@ -1,0 +1,29 @@
+:host {
+  .modal {
+    background: rgba(black, 0.5);
+    overflow: hidden !important;
+
+    .mobile & {
+      width: 100%;
+    }
+
+    .modal-content {
+      max-height: 85vh;
+      overflow: hidden;
+
+      ::ng-deep {
+        .wrapper {
+          overflow-y: auto;
+          height: 80vh;
+        }
+      }
+    }
+
+    @media (min-width: 576px) {
+      .modal-dialog {
+        // max-width: 500px;
+        margin: 5rem auto;
+      }
+    }
+  }
+}

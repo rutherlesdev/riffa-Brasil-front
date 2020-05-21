@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="card-img-top" [imageLoader]="contact.picture"></div>
+  <div class="card-body">
+    <h5 class="card-title">{{(contact.title || '') + ' ' + contact.firstName + ' ' + contact.lastName}}</h5>
+    <p class="card-text">
+      {{contact?.bio || 'You do not have a bio set. go to profile edit page to setup your bio'}}
+    </p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><i class="fa fa-envelope"></i> {{contact.email || 'No Email address'}}</li>
+    <li class="list-group-item"><i class="fa fa-phone"></i> {{contact.phone || 'No phone number'}}</li>
+    <li class="list-group-item">
+      <i class="fa fa-home"></i>
+      {{contact.address || 'No Street Address'}} <br>
+      {{contact.town || 'No City data'}}<br>
+      {{contact.postalCode || 'No Postalcode data'}}<br>
+      {{contact.country || 'No country selected'}}<br>
+    </li>
+  </ul>
+  <div class="card-body">
+    <a (click)="openEdit()" class="card-link text-primary pointer">Edit Profile</a>
+    <!-- <a href="#" class="card-link">Another link</a> -->
+  </div>
+</div>

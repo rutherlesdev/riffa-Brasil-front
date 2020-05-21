@@ -1,0 +1,19 @@
+<app-spinner class="mt-3" [isLoading]="loading">
+
+  <ng-container *ngIf="invitations && invitations.length > 0">
+    <h3>Invitations Sent</h3>
+    <app-table [config]="{showSelect: false}" [data]="invitations" [headers]="tableHeaders" [actions]="tableActions">
+    </app-table>
+    <ngb-pagination maxSize="5" [collectionSize]="invitationsBK.length-1" (pageChange)="onPageChange($event)"
+      aria-label="Default pagination">
+    </ngb-pagination>
+  </ng-container>
+
+  <ng-container *ngIf="invitations && invitations.length === 0">
+    <div class="jumbotron">
+      <h4>Empty</h4>
+      <p class="lead text-dark">No invitations to display</p>
+    </div>
+  </ng-container>
+
+</app-spinner>

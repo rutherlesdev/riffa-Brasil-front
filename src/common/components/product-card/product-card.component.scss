@@ -1,0 +1,32 @@
+@import '../../../styles.scss';
+
+:host {
+  margin-bottom: 20px;
+  display: block;
+
+  .card {
+    .card-img-top {
+      height: 150px;
+      background-color: rgba(map-get($theme-colors, primary), 0.1);
+      // background-size: contain !important;
+      // border-bottom: 1px solid grey;
+    }
+
+    .card-title {
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .card-body {
+      text-align: center;
+
+      .price {
+        display: flex;
+      }
+
+      .no-good {
+        text-decoration: line-through;
+      }
+    }
+  }
+}

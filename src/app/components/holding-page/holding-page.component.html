@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="flex-area">
+    <img src="/assets/images/raffler-logo-small-small.png" alt="">
+    <h1>Raffler</h1>
+    <p>Signup now for £5 off</p>
+    <button class="btn btn-primary" (click)="openAuth('signup-only')" angulartics2On="click" angularticsAction="SignUp"
+      angularticsLabel="SignUpButton" [angularticsCategory]="'HoldingPage'">Sign Up</button>
+  </div>
+  <div class="footer">
+    <a class="pointer" (click)="openAuth('login-admin')">Admin Section</a>
+  </div>
+</div>

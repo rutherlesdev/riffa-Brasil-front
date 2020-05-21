@@ -1,0 +1,124 @@
+<div class="container my-4" *ngIf="raffle">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="image-wrapper">
+        <div class="images">
+          <div class="img" [ngClass]="{'active': selectionIndex === i}" [imageLoader]="item"
+            *ngFor="let item of raffle?.product?.images; let i = index" (click)="selectionIndex = i"></div>
+        </div>
+        <div class="mainImage">
+          <img [src]="raffle?.product?.images[selectionIndex]" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <h3 class="my-3">{{raffle?.name}}</h3>
+
+      <small class="text-sm"
+        innerHTML="{{(raffle?.product?.description | markdown) || 'No Description for this raffle'}}"></small>
+
+      <div class="more-detail">
+        <hr>
+        <span class="my-3 price">
+          <h5 class="text-lg text-secondary">{{raffle.price | ccurrency}}</h5>
+          <div class="mr-4"></div>
+          <div class="text-lg text-danger no-good">{{raffle.retailPrice | ccurrency}}</div>
+        </span>
+
+        <h6 class="my-2" *ngIf="!isEnded">
+          {{deadline?.days || '' }}
+          {{deadline?.days ? 'days': ''}}
+          {{deadline?.hours || '' }}
+          {{deadline?.hours ? 'hrs': ''}}
+          {{deadline?.minutes || '' }} mins
+          {{deadline?.seconds || '' }} secs remaining</h6>
+
+        <!-- <small class="mb-4">{{entriesLeft}} raffle entires left</small> -->
+        <app-progress-bar class="mt-1 mb-1" text="{{entriesLeft}} raffle entries left" [value]="entriesLeft">
+        </app-progress-bar>
+
+
+        <span class="my-3 price">
+          <button class="btn btn-primary" [disabled]="isEnded" (click)="scrollTo('play-raffle')" angulartics2On="click" angularticsAction="PickNumbers" angularticsLabel="PlayNowButton" [angularticsCategory]="'RaffleItemPage'">Play Now</button>
+          <div class="mr-4"></div>
+          <button class="btn btn-primary" [disabled]="isEnded" [ngbPopover]="popContent" [popoverTitle]="popTitle"
+            [autoClose]="'outside'" #popover="ngbPopover" angulartics2On="click" angularticsAction="PickNumbers" angularticsLabel="LuckyDipButton" [angularticsCategory]="'RaffleItemPage'">
+            Lucky Dip
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div id="play-raffle" class="pt-3 my-5" *ngIf="!isEnded">
+    <div class="row">
+      <div class="col-md-8 col-lg-8">
+        <app-draw-picker *ngIf="entries" [entries]="entries" [max]="raffle.maxOptions"
+          [maxSelection]="raffle.maxUserSelection" [userSelection]="userEntries" (emitEntries)="userEntries = $event">
+        </app-draw-picker>
+      </div>
+      <div class="col-md-4 col-lg-4">
+        <!-- TrustBox widget - Micro Review Count -->
+        <div class="trustpilot-widget" data-locale="en-GB" data-template-id="5419b6a8b0d04a076446a9ad"
+          data-businessunit-id="5d0784964b7e5500018c5188" data-style-height="24px" data-style-width="100%"
+          data-theme="light"> </div> <!-- End TrustBox widget -->
+        <div class="tutorial">
+          <h4 class="mb-3">How to Play</h4>
+          <ul>
+            <li>You can select up to <b>{{raffle.maxUserSelection}} numbers</b> from this Raffle</li>
+            <li>Numbers that are already taken will appear as <span class="text-secondary p-1 prev-selected">18</span>
+            </li>
+            <li>Your previously entered numbers will appear as <span
+                class="bg-danger text-light p-1 prev-user-selected">23</span>
+            </li>
+            <li>Your currently selected numbers will appear as <span
+                class="bg-secondary text-light p-1 current-user-selected">23</span>
+            </li>
+            <li>Select <span class="btn-sm btn btn-primary">Verify and Pay!</span> button to pay for your selected
+              numbers and enter the raffle draw</li>
+            <li>Goodluck!</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-lg mt-2 ml-auto btn-primary" [disabled]="!hasNewEntries" (click)="verifyPay()" angulartics2On="click" angularticsAction="VerifyPay" angularticsLabel="VerifyPayButton" [angularticsCategory]="'RaffleItemPage'">Verfiy and
+      Pay! <i class="fa fa-shopping-cart"></i></button>
+  </div>
+
+  <div class="item-tabs">
+    <ngb-tabset>
+      <ngb-tab title="Description">
+        <ng-template ngbTabContent>
+          <p class="p-4" innerHTML="{{(raffle.description | markdown) || 'No descriptions set for this product'}}"></p>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Terms">
+        <ng-template ngbTabContent>
+          <p class="p-4" innerHTML="{{(raffle.terms | markdown) || 'No terms set for this raffle'}}">
+          </p>
+
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
+  </div>
+</div>
+
+
+<ng-template #popContent>
+  <p>Choose how many lucky dip numbers you want. This raffle has a maximum of <span class="badge badge-success">
+      {{raffle.maxUserSelection}}</span> selection</p>
+  <form-field suffix="true" size="lg">
+    <input type="number" inputRef min="0" [max]="raffle.maxUserSelection" [(ngModel)]="luckyDipSelection">
+    <button suffix class="btn btn-sm" (click)="doLuckyDip()" angulartics2On="click" angularticsAction="GetLuckyDipNumbers" angularticsLabel="LuckyDipGoButton" [angularticsCategory]="'RaffleItemLuckyDip'">Go</button>
+  </form-field>
+  <hr>
+  <div class="d-block">
+    <div class="badge badge-primary badge-lg mx-2 p-1 txt-lg" *ngFor="let item of userEntries">{{item}}</div>
+  </div>
+
+  <button *ngIf="userEntries" class="btn mt-3 ml-auto btn-primary" [disabled]="!hasNewEntries"
+    (click)="verifyPay()" angulartics2On="click" angularticsAction="VerifyPay" angularticsLabel="VerifyPayButton" [angularticsCategory]="'RaffleItemLuckyDip'">Verify and
+    Pay! <i class="fa fa-shopping-cart"></i></button>
+</ng-template>
+<ng-template #popTitle>Lucky Dip Random Selection</ng-template>

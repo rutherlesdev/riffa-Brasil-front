@@ -1,0 +1,22 @@
+@import '../../../../../styles.scss';
+
+@media (max-width: 575.98px) {
+  :host {
+    width: 100% !important;
+  }
+}
+
+:host {
+
+  width: 500px;
+  display: block;
+  margin: auto;
+
+  .body {
+    .footer {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

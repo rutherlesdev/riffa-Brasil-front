@@ -1,0 +1,147 @@
+@import "../../../styles.scss";
+
+@mixin progress-bar($name) {
+  &.progress-#{$name} {
+    background-color: map-get($theme-colors, gray);
+
+    .determinate,
+    .indeterminate {
+      background-color: map-get($theme-colors, $name);
+    }
+  }
+}
+
+:host {
+  display: block;
+  width: 100%;
+
+  .progress {
+    position: relative;
+    height: 16px;
+    // display: block;
+    width: 100%;
+    background-clip: padding-box;
+    border-radius: 18px;
+    overflow: hidden;
+    // padding-top: 2px;
+
+    .determinate {
+      position: absolute;
+      height: 16px;
+      background-color: inherit;
+      top: 0;
+      bottom: 0;
+      transition: width 0.3s linear;
+    }
+
+    .text {
+      z-index: 10;
+      color: white;
+      position: absolute;
+      text-align: center;
+      width: 100%;
+    }
+
+    .indeterminate {
+      &:before {
+        content: "";
+        position: absolute;
+        background-color: inherit;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        will-change: left, right;
+        animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        background-color: inherit;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        will-change: left, right;
+        animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+        animation-delay: 1.15s;
+      }
+    }
+  }
+}
+
+@-webkit-keyframes indeterminate {
+  0% {
+    left: -35%;
+    right: 100%;
+  }
+
+  60% {
+    left: 100%;
+    right: -90%;
+  }
+
+  100% {
+    left: 100%;
+    right: -90%;
+  }
+}
+
+@keyframes indeterminate {
+  0% {
+    left: -35%;
+    right: 100%;
+  }
+
+  60% {
+    left: 100%;
+    right: -90%;
+  }
+
+  100% {
+    left: 100%;
+    right: -90%;
+  }
+}
+
+@-webkit-keyframes indeterminate-short {
+  0% {
+    left: -200%;
+    right: 100%;
+  }
+
+  60% {
+    left: 107%;
+    right: -8%;
+  }
+
+  100% {
+    left: 107%;
+    right: -8%;
+  }
+}
+
+@keyframes indeterminate-short {
+  0% {
+    left: -200%;
+    right: 100%;
+  }
+
+  60% {
+    left: 107%;
+    right: -8%;
+  }
+
+  100% {
+    left: 107%;
+    right: -8%;
+  }
+}
+
+.progress {
+  @include progress-bar(secondary);
+  @include progress-bar(primary);
+  @include progress-bar(danger);
+  @include progress-bar(warning);
+  @include progress-bar(info);
+  // @include progress-bar(disabled);
+}

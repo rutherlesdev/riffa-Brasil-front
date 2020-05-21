@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+// @import '../node_modules/open-iconic/font/css/open-iconic-bootstrap.css';
+@import '~ngx-toastr/toastr.css';
+// @import '~ngx-toastr/toastr-bs4-alert';
+@import "pikaday-time/css/pikaday.css";
+// node_modules/pikaday-time/css/pikaday.css
+@import './theme/custom.bootstrap.scss';
+@import './theme/password-secure-meter.scss';
+@import './theme/button-spinner.scss';

@@ -1,0 +1,40 @@
+<div class="card" *ngIf="raffle">
+
+  <div class="card-img-top" [imageLoader]="raffle?.product?.images[0]"
+    (click)="startDate < today ? gotoPage(routes.live + '/' + raffle.id): null">
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{raffle?.product?.name || 'Unknown'}}</h5>
+    <div class="card-text my-3" *ngIf="startDate <= today">
+      <small class="mb-1">Raffle ends {{raffle.endDate | amTimeAgo}}</small>
+      <app-progress-bar *ngIf="entriesLeft" class="my-2" [value]="entriesLeft"
+        text="{{entriesLeft}} raffle entires left">
+      </app-progress-bar>
+      <span class="my-3 price">
+        <div class="text-secondary">{{raffle.price | ccurrency}}</div>
+        <div class="m-auto"></div>
+        <div class="text-danger no-good">{{raffle.retailPrice | ccurrency}}</div>
+      </span>
+    </div>
+
+    <div class="card-text my-3" *ngIf="startDate > today">
+      <small class="mb-1">Raffle starts {{raffle.startDate | amTimeAgo}}</small>
+      <!--
+      <app-progress-bar class="mb-2" [value]="timeElapsed"></app-progress-bar> -->
+      <span class="my-3 price">
+        <div class="text-secondary">{{raffle.price | ccurrency}}</div>
+        <div class="m-auto"></div>
+        <div class="text-danger no-good">{{raffle.retailPrice | ccurrency}}</div>
+      </span>
+    </div>
+
+    <button *ngIf="startDate <= today && endDate >= today" class="btn btn-primary" [disabled]="!raffle.product"
+      (click)="gotoPage(routes.live + '/' + raffle.id)" angulartics2On="click" angularticsAction="ViewRaffleItem" angularticsLabel="PlayNowButton" [angularticsCategory]="'ProfilePage'">
+      Play Now</button>
+
+    <span *ngIf="startDate > today && !hasRaffle" class="btn btn-secondary" (click)="addToProfile()" angulartics2On="click" angularticsAction="WatchRaffle" angularticsLabel="WatchRaffleButton" [angularticsCategory]="'LiveRafflePage'">Watch Raffle</span>
+    <span *ngIf="startDate > today && hasRaffle" class="btn btn-danger" (click)="removeFromProfile()" angulartics2On="click" angularticsAction="StopWatchingRaffle" angularticsLabel="StopWatchRaffleButton" [angularticsCategory]="'ProfilePage'">Remove
+      Raffle</span>
+    <span *ngIf="endDate < today" class="btn btn-danger">Ended</span>
+  </div>
+</div>

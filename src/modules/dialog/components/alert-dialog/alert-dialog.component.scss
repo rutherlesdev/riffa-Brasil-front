@@ -1,0 +1,50 @@
+// @import '../../../../../../app_web';
+
+$icon-size: 53px;
+
+:host {
+  background: #fff;
+  text-align: center;
+  position: relative;
+
+  .container {
+    padding: 10px 24px;
+
+    .text {
+      padding: 10px 0;
+      display: block;
+
+      :ng-deep {
+        .left {
+          text-align: left;
+        }
+
+        .right {
+          text-align: right;
+        }
+      }
+    }
+
+    .buttons {
+      display: flex;
+      padding: 10px 0;
+      justify-content: center;
+
+      &.column {
+        flex-direction: column;
+
+        button {
+          margin: 5px 0;
+        }
+      }
+
+      &:not(.column) {
+        flex-direction: row;
+
+        button {
+          margin: 0 5px;
+        }
+      }
+    }
+  }
+}

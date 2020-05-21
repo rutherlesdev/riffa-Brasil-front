@@ -1,0 +1,16 @@
+  <div class="card" *ngIf="winner">
+
+    <div class="card-img-top" [imageLoader]="winner?.raffleDraw?.product?.images[0]">
+      <div class="profile" [imageLoader]="winner?.account?.contact?.picture"></div>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title text-dark mt-5 mb-1">
+        {{winner?.account?.contact ? (winner?.account?.contact.firstName + ' ' + winner?.account?.contact?.lastName): 'Unknown User'}}
+      </h5>
+      <small class="card-text text-dark mt-0">
+        {{winner?.account?.contact.town ? 'from': 'Somewhere on Earth' }} {{winner?.account?.contact?.town}}
+      </small>
+      <br>
+      <span class="btn btn-primary mt-1">{{winner.raffleDraw.price | ccurrency}}</span>
+    </div>
+  </div>

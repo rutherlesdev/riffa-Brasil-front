@@ -1,0 +1,145 @@
+<div class="wrapper m-3 p-2" #wrapper>
+  <h3 class="mb-3">{{raffle?.id ? 'Edit' : 'Add New'}} Raffle</h3>
+
+  <form #form="ngForm" novalidate>
+    <form-field label="Name">
+      <input inputRef name="name" #name="ngModel" [(ngModel)]="raffle.name" required>
+      <div invalid *ngIf="name.dirty && name.invalid">
+        <span *ngIf="name?.errors?.required">required</span>
+      </div>
+    </form-field>
+
+    <form-field label="Category">
+      <select inputRef name="category" #category="ngModel" [(ngModel)]="raffle.category" required>
+        <option [value]="item" *ngFor="let item of categories">{{item}}</option>
+      </select>
+      <div invalid *ngIf="category.dirty && category.invalid">
+        <span *ngIf="category?.errors?.required">required</span>
+      </div>
+    </form-field>
+
+    <checkbox label="Is featured">
+      <input inputRef type="checkbox" #isFeatured="ngModel" [(ngModel)]="raffle.isFeatured" name="isFeatured">
+    </checkbox>
+
+    <div class="row">
+      <div class="col">
+        <form-field label="Price">
+          <input inputRef name="price" #price="ngModel" [(ngModel)]="raffle.price" restrict="number" required>
+          <div invalid *ngIf="price.dirty && price.invalid">
+            <span *ngIf="price?.errors?.required">required</span>
+          </div>
+        </form-field>
+      </div>
+      <div class="col">
+        <form-field label="Retail Price">
+          <input inputRef name="retailPrice" #retailPrice="ngModel" [(ngModel)]="raffle.retailPrice" restrict="number"
+            required>
+          <div invalid *ngIf="retailPrice.dirty && retailPrice.invalid">
+            <span *ngIf="retailPrice?.errors?.required">required</span>
+          </div>
+        </form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <form-field suffix="true" label="Start Date">
+          <input inputRef name="start" [(ngModel)]="raffle.startDate" datePicker #startDate="datePicker"
+            #start="ngModel">
+          <i suffix class="fa fa-calendar text-secondary" (click)="startDate.toggle()"></i>
+          <div invalid *ngIf="start.dirty && start.invalid">
+            <span *ngIf="start?.errors?.invalid">Must be a valid date</span>
+          </div>
+        </form-field>
+      </div>
+      <div class="col">
+        <form-field suffix="true" label="End Date">
+          <input inputRef name="end" [(ngModel)]="raffle.endDate" datePicker #endDate="datePicker" #end="ngModel"
+            [date]="{minDate: raffle.startDate}">
+          <i suffix class="fa fa-calendar text-secondary" (click)="endDate.toggle()"></i>
+          <div invalid *ngIf="end.dirty && end.invalid">
+            <span *ngIf="end?.errors?.invalid">Must be a valid date</span>
+            <span *ngIf="end?.errors?.minDate">End date cannot be less than start date</span>
+          </div>
+        </form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <form-field label="Max User Selection">
+          <input inputRef name="maxUserSelection" [(ngModel)]="raffle.maxUserSelection" #maxUserSelection="ngModel"
+            restrict="number" required>
+          <div invalid *ngIf="maxUserSelection.dirty && maxUserSelection.invalid">
+            <span *ngIf="maxUserSelection?.errors?.required">required</span>
+          </div>
+        </form-field>
+      </div>
+      <div class="col">
+        <form-field label="Max Options">
+          <input inputRef name="maxOptions" [(ngModel)]="raffle.maxOptions" #maxOptions="ngModel" required
+            restrict="number">
+          <div invalid *ngIf="maxOptions.dirty && maxOptions.invalid">
+            <span *ngIf="maxOptions?.errors?.required">required</span>
+          </div>
+        </form-field>
+      </div>
+      <div class="col">
+        <form-field label="Max Winners">
+          <input inputRef name="maxWinners" [(ngModel)]="raffle.maxWinners" #maxWinners="ngModel" restrict="number"
+            required>
+          <div invalid *ngIf="maxWinners.dirty && maxWinners.invalid">
+            <span *ngIf="maxWinners?.errors?.required">required</span>
+          </div>
+        </form-field>
+      </div>
+    </div>
+
+    <td-text-editor [value]="raffle.description" #textDescEditor></td-text-editor>
+
+    <td-text-editor [value]="raffle.terms" #textTermsEditor></td-text-editor>
+
+    <!-- <form-field label="Raffle Description">
+      <textarea inputRef name="description" #description="ngModel" [(ngModel)]="raffle.description"></textarea>
+    </form-field>
+
+    <form-field label="Raffle Terms">
+      <textarea inputRef name="terms" #terms="ngModel" [(ngModel)]="raffle.terms"></textarea>
+    </form-field> -->
+
+    <div class="manage-raffle-products">
+      <div class="list-group-item" *ngIf="raffleProduct">
+        <div class="image" [imageLoader]="raffleProduct?.images[0]"></div>
+        <div class="detail">
+          <p><strong>Product Name:</strong> {{raffleProduct.name}}</p>
+        </div>
+        <div class="action">
+          <button class="btn btn-danger" (click)="raffleProduct = null">
+            <i class="fa fa-minus"></i>
+          </button>
+        </div>
+      </div>
+      <div class="d-block" *ngIf="!raffleProduct">
+        <button class="btn btn-{{showProductTable ? 'warning': 'secondary'}} mb-2"
+          (click)="showProductTable = !showProductTable">{{showProductTable ? 'Hide': 'Show'}} Product</button>
+
+        <ng-container *ngIf="showProductTable === true">
+          <app-table [config]="{showSelect: false, itemsPerPage: pageSize}" [data]="products | orderBy: '-updatedAt'"
+            [headers]="tableHeaders" [actions]="tableActions">
+          </app-table>
+          <ngb-pagination maxSize="5" [pageSize]="pageSize" [collectionSize]="productsBK.length"
+            (pageChange)="onPageChange($event)" aria-label="Default pagination">
+          </ngb-pagination>
+        </ng-container>
+      </div>
+    </div>
+
+  </form>
+
+  <div class="footer text-right mt-3">
+    <button class="btn btn-primary mr-2" [btnStatus]="loading" [disabled]="!(form.valid || raffle.productId)"
+      (click)="save()">Save</button>
+    <button class="btn btn-dark" (click)="closeModal()">Close</button>
+  </div>
+</div>

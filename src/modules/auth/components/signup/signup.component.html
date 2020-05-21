@@ -1,0 +1,85 @@
+<div class="modal-body">
+  <h4>Sign up
+
+    <div class="close pointer" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </div>
+
+  </h4>
+
+  <form #form="ngForm" (ngSubmit)="register()">
+
+    <div class="promo" *ngIf="promo">
+      Sign up and get £5 off your next purchase
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <form-field label="Firstname" size="lg">
+          <input inputRef name="firstname" #firstname="ngModel" required [(ngModel)]="model.firstName">
+          <div invalid *ngIf="firstname.touched && firstname.invalid">
+            <p *ngIf="firstname?.errors.required">required</p>
+          </div>
+        </form-field>
+      </div>
+      <div class="col">
+        <form-field label="Lastname" size="lg">
+          <input inputRef name="lastname" #lastname="ngModel" required [(ngModel)]="model.lastName">
+          <div invalid *ngIf="lastname.touched && lastname.invalid">
+            <p *ngIf="lastname?.errors.required">required</p>
+          </div>
+        </form-field>
+      </div>
+    </div>
+    <form-field label="Email" size="lg">
+      <input inputRef type="email" name="email" #email="ngModel" email required [(ngModel)]="model.email">
+      <div invalid *ngIf="email.touched && email.invalid">
+        <p *ngIf="email?.errors.required">required</p>
+        <p *ngIf="email?.errors.required">enter a valid email</p>
+      </div>
+    </form-field>
+
+    <form-field label="Password" size="lg">
+      <input inputRef type="password" name="password" #password="ngModel" required (secure)="passwordStrength = $event"
+        [(ngModel)]="model.password">
+      <div class="password-secure-meter {{passwordStrength}}">
+        <span></span>
+      </div>
+      <div invalid *ngIf="password.touched && password.invalid">
+        <p *ngIf="password?.errors.required">required</p>
+        <p *ngIf="password?.errors.secure || password?.errors.invalid">password is not secure</p>
+      </div>
+    </form-field>
+
+    <form-field label="Retype Password" size="lg">
+      <input inputRef type="password" name="rpassword" #rpassword="ngModel" required [compare-password]="password"
+        [(ngModel)]="model.rpassword">
+      <div invalid *ngIf="rpassword.touched && rpassword.invalid">
+        <p *ngIf="rpassword?.errors.required">required</p>
+        <p *ngIf="rpassword?.errors.compareTo">passwords do not match</p>
+      </div>
+    </form-field>
+
+    <div class="call-to-action">
+      <button type="submit" [btnStatus]="loading" class="btn btn-primary btn-lg" (click)="register()" angulartics2On="click" angularticsAction="SignUp" angularticsLabel="SignUpButton" [angularticsCategory]="'SignUpPopup'">Sign Up</button>
+
+      <small class="options"> or you can sign up with</small>
+
+      <div class="row social">
+        <div class="col">
+          <button type="button" [btnStatus]="authProps.fbLoading" (click)="authProps.fbLogin()"
+            class="btn btn-facebook btn-lg" angulartics2On="click" angularticsAction="SignUp" angularticsLabel="SignUpButtonFacebook" [angularticsCategory]="'SignUpPopup'">Facebook</button>
+        </div>
+        <div class="col">
+          <button type="button" [btnStatus]="authProps.googleLoading" (click)="authProps.googleLogin()"
+            class="btn btn-google btn-lg" angulartics2On="click" angularticsAction="SignUp" angularticsLabel="SignUpButtonGmail" [angularticsCategory]="'SignUpPopup'">Google</button>
+        </div>
+      </div>
+
+      <div class="options"> Already have an account?
+        <strong class="text-lg text-primary pointer" (click)="openLogin()" angulartics2On="click" angularticsAction="SignIn" angularticsLabel="SignInLink" [angularticsCategory]="'SignUpPopup'">Signin</strong>
+      </div>
+    </div>
+  </form>
+
+</div>

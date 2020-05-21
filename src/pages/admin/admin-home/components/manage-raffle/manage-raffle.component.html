@@ -1,0 +1,51 @@
+<div class="wrapper m-3 p-2">
+  <h3 class="mb-3">Manage Raffle
+    <div class="close pointer" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </div>
+  </h3>
+  <div class="jumbotron">
+    <div class="raffle-wrapper">
+      <div class="image" [imageLoader]="raffle?.product?.images[0]"></div>
+      <div class="detail">
+        <h4>{{raffle.name}}</h4>
+        <p>This raffle has a maximum of {{raffle.maxWinners}} winning number {{raffle.maxWinners > 1 ? 's' :''}}.</p>
+      </div>
+    </div>
+    <hr class="mb-4">
+    <button class="btn btn-primary btn-lg" *ngIf="!raffle.isCompleted" (click)="getWinningNumbers()"
+      [btnStatus]="loading">
+      Complete Raffle Draw
+    </button>
+
+    <h3 *ngIf="raffleWinners.length > 0">
+      <small>Winning raffle numbers are</small>
+      <span class="badge badge-primary mx-1" *ngFor="let item of raffleWinners"> {{item.winningNumber}}</span>
+    </h3>
+
+  </div>
+
+  <div class="winners" *ngIf="raffle.isCompleted && winners && winners.length > 0">
+    <h5 class="mb-2">There are {{winners.length}} winner{{winners.length > 1 ? 's': ''}} for this raffle</h5>
+    <div class="row mb-3">
+      <div class="col-sm-6 col-md-3 my-1" *ngFor="let item of winners">
+        <div class="winning-contact">
+          <div class="image" [imageLoader]="item?.account?.contact?.picture"></div>
+          <small
+            class="name">{{item?.account?.contact ? (item?.account?.contact?.firstName + ' ' + item?.account?.contact?.lastName) : 'Unknown User'}}</small>
+          <span class="badge badge-primary my-1"> Winning No: {{item.entryNumber}}</span>
+          <button class="btn btn-sm btn-secondary btn-outline" (click)="send([item])"><i
+              class="fa fa-envelope"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-sm btn-secondary" (click)="send(winners)"><i class="fa fa-envelope"></i> Email all
+      Winners</button>
+  </div>
+
+  <div class="winners" *ngIf="raffle.isCompleted && winners && winners.length === 0">
+    <h4>There are no Winners!</h4>
+
+  </div>
+</div>

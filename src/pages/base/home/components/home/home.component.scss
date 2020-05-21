@@ -1,0 +1,63 @@
+@import '../../../../../styles.scss';
+
+:host {
+  .bg {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 0;
+    color: white;
+
+    ngb-carousel {
+      // height: 325px;
+      outline: none;
+
+      ::ng-deep {
+        .featured-product {
+          display: flex;
+          padding: 20px;
+          width: 70%;
+          margin: auto;
+          margin-bottom: 20px;
+
+          @include media-breakpoint-only(xs) {
+            flex-direction: column;
+            width: 100%;
+          }
+
+          .image {
+            display: flex;
+            height: 250px;
+            flex: 1;
+
+            @include media-breakpoint-only(xs) {
+              height: 150px;
+              flex: unset;
+            }
+
+            background-size: contain !important;
+          }
+
+          .detail {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding-left: 30px;
+            text-align: left;
+
+            .price {
+              display: flex;
+
+              .no-good {
+                text-decoration: line-through;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .container-fluid {}
+  }
+}

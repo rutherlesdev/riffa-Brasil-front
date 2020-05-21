@@ -1,0 +1,25 @@
+<div class="container-fluid bg-white my-3">
+
+  <button type="button" class="btn btn-primary" (click)="addProduct()">Add Product</button>
+
+  <app-spinner class="mt-3" [isLoading]="loading">
+
+    <ng-container *ngIf="products && products.length > 0">
+      <app-table [config]="{showSelect: false, itemsPerPage: pageSize}" [data]="products | orderBy: '-updatedAt'"
+        [headers]="tableHeaders" [actions]="tableActions">
+      </app-table>
+      <ngb-pagination maxSize="5" [pageSize]="pageSize" [collectionSize]="productsBK.length"
+        (pageChange)="onPageChange($event)" aria-label="Default pagination">
+      </ngb-pagination>
+    </ng-container>
+
+    <ng-container *ngIf="products && products.length === 0">
+      <div class="jumbotron">
+        <h4>Empty</h4>
+        <p class="lead text-dark">No products to display</p>
+      </div>
+    </ng-container>
+
+  </app-spinner>
+
+</div>

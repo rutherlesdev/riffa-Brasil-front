@@ -1,0 +1,26 @@
+<div class="container mt-5">
+  <app-spinner [isLoading]="loading">
+    <ng-container *ngIf="raffles && raffles.length > 0">
+      <div class="row">
+        <div class="col-sm-6 col-md-8">
+          <app-search placeholder="Search Competitions" (event)="doSearch($event)" angulartics2On="click" angularticsAction="SearchRaffle" angularticsLabel="SearchBar" [angularticsCategory]="'LiveRaffleSearch'"></app-search>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <!-- <app-filter [property]="raffles[0]" (event)="sort($event)"></app-filter> -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-sm-12 col-md-4 col-lg-3" *ngFor="let item of raffles | orderBy: '-endDate'">
+          <app-product-card [raffle]="item"></app-product-card>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="raffles && raffles.length < 1">
+      <div class="jumbotron text-center">
+        <h1 class="display-4">No Live Raffles</h1>
+        <p class="lead">No raffles available yet - check again soon for new competitions</p>
+      </div>
+    </ng-container>
+
+  </app-spinner>
+</div>

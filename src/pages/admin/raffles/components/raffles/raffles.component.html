@@ -1,0 +1,25 @@
+<div class="container-fluid bg-white my-3">
+
+  <button type="button" class="btn btn-primary" (click)="addProduct()">Add Raffle</button>
+
+  <app-spinner class="mt-3" [isLoading]="loading">
+
+    <ng-container *ngIf="raffles && raffles.length > 0">
+      <app-table [config]="{showSelect: false, itemsPerPage: pageSize}" [data]="raffles | orderBy: '-updatedAt'"
+        [headers]="tableHeaders" [actions]="tableActions">
+      </app-table>
+      <ngb-pagination maxSize="5" [pageSize]="pageSize" [collectionSize]="rafflesBK.length"
+        (pageChange)="onPageChange($event)" aria-label="Default pagination">
+      </ngb-pagination>
+    </ng-container>
+
+    <ng-container *ngIf="raffles && raffles.length === 0">
+      <div class="jumbotron">
+        <h4>Empty</h4>
+        <p class="lead text-dark">No raffles to display</p>
+      </div>
+    </ng-container>
+
+  </app-spinner>
+
+</div>
