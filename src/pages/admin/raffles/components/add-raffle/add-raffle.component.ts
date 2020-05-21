@@ -43,7 +43,7 @@ export class AddRaffleComponent extends Extender implements OnInit {
   public pageSize: number = 5;
   public showProductTable: boolean;
   public categories: string[] = [
-    'Cash', 'Cars', 'Tech', 'Holidays', 'Lifestyle'
+    'Dinheiro', 'Caros', 'Técnologia', 'Viagens', 'Motos'
   ];
   @ViewChild('form') public form: NgForm;
   @ViewChild('wrapper') public wrapper: ElementRef;

@@ -33,7 +33,14 @@
           <div class="image" [imageLoader]="item?.account?.contact?.picture"></div>
           <small
             class="name">{{item?.account?.contact ? (item?.account?.contact?.firstName + ' ' + item?.account?.contact?.lastName) : 'Unknown User'}}</small>
-          <span class="badge badge-primary my-1"> Winning No: {{item.entryNumber}}</span>
+          <span class="badge badge-primary my-1"> Winning No: {{item.entryNumber  < 10
+            ? '00'+item.entryNumber
+            : ((item.entryNumber > 9 && item.entryNumber < 100)
+            ? '0'+item.entryNumber
+            : item.entryNumber)
+            
+          
+          }}</span>
           <button class="btn btn-sm btn-secondary btn-outline" (click)="send([item])"><i
               class="fa fa-envelope"></i></button>
         </div>

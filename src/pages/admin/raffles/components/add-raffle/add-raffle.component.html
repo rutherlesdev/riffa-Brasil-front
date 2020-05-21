@@ -32,7 +32,7 @@
         </form-field>
       </div>
       <div class="col">
-        <form-field label="Retail Price">
+        <form-field label="Menor preço">
           <input inputRef name="retailPrice" #retailPrice="ngModel" [(ngModel)]="raffle.retailPrice" restrict="number"
             required>
           <div invalid *ngIf="retailPrice.dirty && retailPrice.invalid">

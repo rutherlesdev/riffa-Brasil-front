@@ -3,7 +3,7 @@
     <ng-container *ngIf="raffles && raffles.length > 0">
       <div class="row">
         <div class="col-sm-6 col-md-8">
-          <app-search placeholder="Search Competitions" (event)="doSearch($event)" angulartics2On="click" angularticsAction="SearchRaffle" angularticsLabel="SearchBar" [angularticsCategory]="'LiveRaffleSearch'"></app-search>
+          <app-search placeholder="Procurar Rifa" (event)="doSearch($event)" angulartics2On="click" angularticsAction="SearchRaffle" angularticsLabel="SearchBar" [angularticsCategory]="'LiveRaffleSearch'"></app-search>
         </div>
         <div class="col-sm-6 col-md-4">
           <!-- <app-filter [property]="raffles[0]" (event)="sort($event)"></app-filter> -->
@@ -17,8 +17,8 @@
     </ng-container>
     <ng-container *ngIf="raffles && raffles.length < 1">
       <div class="jumbotron text-center">
-        <h1 class="display-4">No Live Raffles</h1>
-        <p class="lead">No raffles available yet - check again soon for new competitions</p>
+        <h1 class="display-4">Sem Jogos no Momento</h1>
+        <p class="lead">Ainda não há sorteios disponíveis - verifique novamente em breve se há novas competições</p>
       </div>
     </ng-container>
 

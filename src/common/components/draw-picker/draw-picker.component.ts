@@ -46,7 +46,7 @@ export class DrawPickerComponent extends Extender implements OnInit, OnChanges {
     if (index !== -1) {
       this.userSelection.splice(index, 1);
     } else {
-      this.userSelection.length < this.maxSelection ? this.userSelection.push(number) : this.toastr.warning('You cannot select any more numbers');
+      this.userSelection.length < this.maxSelection ? this.userSelection.push(number) : this.toastr.warning('Você não pode selecionar mais números');
     }
     this.emitEntries.next(this.userSelection); // .filter((obj) => this.entries.map((entry) => entry.entryNumber).indexOf(obj) === -1));
   }

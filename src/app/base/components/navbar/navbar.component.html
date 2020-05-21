@@ -2,7 +2,7 @@
   <div class="container my-3">
     <a class="navbar-brand text-light" [routerLink]="routes.home">
       <img src="/assets/images/logo.png" width="30" height="30" class="d-inline-block align-top mr-2" alt="logo">
-      Raffler
+      Rifas Brasil
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
       aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,12 +20,11 @@
           <li class="nav-item mr-3 text-light">
             <a class="nav-link pointer"><span (click)="openAuth('login')" angulartics2On="click"
                 angularticsAction="Login" angularticsLabel="LoginButton" [angularticsCategory]="'MenuBar'">
-                Login</span></a>
+                Entrar</span></a>
           </li>
           <li class="nav-item">
             <a class="btn btn-light pointer"><span (click)="openAuth('signup')" angulartics2On="click"
-                angularticsAction="SignUp" angularticsLabel="SignUpButton" [angularticsCategory]="'MenuBar'">Sign
-                up</span></a>
+                angularticsAction="SignUp" angularticsLabel="SignUpButton" [angularticsCategory]="'MenuBar'">Cadastre-se</span></a>
           </li>
         </ng-container>
 
@@ -41,11 +40,11 @@
         <div class="profile" [imageLoader]="currentUser.contact.picture" ngbDropdownToggle></div>
         <div ngbDropdownMenu>
           <button ngbDropdownItem (click)="openProfile()" angulartics2On="click" angularticsAction="VisitProfile"
-            angularticsLabel="ProfileButton" [angularticsCategory]="'ProfilePage'">Profile</button>
+            angularticsLabel="ProfileButton" [angularticsCategory]="'ProfilePage'">Perfil</button>
           <button ngbDropdownItem (click)="openInvitations()" angulartics2On="click" angularticsAction="VisitInvites"
-            angularticsLabel="InviteButton" [angularticsCategory]="'InvitePage'">Invitations</button>
+            angularticsLabel="InviteButton" [angularticsCategory]="'InvitePage'">Convites</button>
           <button ngbDropdownItem (click)="logout()" angulartics2On="click" angularticsAction="LogOut"
-            angularticsLabel="LogOutButton" [angularticsCategory]="'HomePage'">Logout</button>
+            angularticsLabel="LogOutButton" [angularticsCategory]="'HomePage'">Sair</button>
         </div>
       </div>
     </div>

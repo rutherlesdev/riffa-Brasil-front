@@ -17,7 +17,7 @@ export class ChartComponent implements OnInit {
       stacked: true,
       title: {
         display: false,
-        text: 'Players Saved'
+        text: 'Jogadores salvos'
       },
       scales: {
         yAxes: [
@@ -45,7 +45,7 @@ export class ChartComponent implements OnInit {
     },
     datasets: [
       {
-        label: 'Retail Price',
+        label: 'Menor preço',
         borderColor: 'red',
         backgroundColor: 'red',
         fill: true,
@@ -90,7 +90,7 @@ export class ChartComponent implements OnInit {
         this.raffleEntries = data;
         this.lineChartData.datasets = [
           {
-            label: 'Retail Price',
+            label: 'Menor Preço',
             borderColor: 'rgba(255, 0, 0, 0.5)',
             backgroundColor: 'rgba(255, 0, 0, 0.1)',
             fill: true,
@@ -98,7 +98,7 @@ export class ChartComponent implements OnInit {
             yAxisID: 'y-axis-1'
           },
           {
-            label: 'Players Saved',
+            label: 'Jogadores salvos',
             borderColor: 'rgba(0, 0, 255, 0.5)',
             backgroundColor: 'rgba(0, 0, 255, 0.1)',
             fill: true,

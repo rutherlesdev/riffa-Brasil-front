@@ -4,7 +4,13 @@
     'completed': entry.status === 1,
     'user-selected': entry.status === 2
   }" [ngStyle]="{ 'grid-row': getRow(i), 'grid-column': entry.column }" (click)="selectNumber(entry.value)" angulartics2On="click" angularticsAction="ChooseRaffleNumbers" angularticsLabel="RaffleNumbers" [angularticsCategory]="'RaffleNumbersGrid'">
-    <span>{{ entry.value }}</span>
+    <span>{{
+      entry.value < 10
+        ? '00'+entry.value
+        : ((entry.value > 9 && entry.value < 100)
+        ? '0'+entry.value
+        : entry.value)
+      }}</span>
   </div>
 </div>
 <ngb-pagination *ngIf="max > 100" maxSize="5" [collectionSize]="max" pageSize="100" (pageChange)="onPageChange($event)" angulartics2On="click" angularticsAction="NextSetOfRaffleNumbers" angularticsLabel="PaginationButton" [angularticsCategory]="'RafflePagination'">

@@ -77,8 +77,8 @@ export class SignupOnlyComponent extends Extender implements OnInit {
           this.dialog.openAlert({
             data: {
               config: {
-                heading: 'Sign up Successful.',
-                body: `An email verification message will be sent to ${
+                heading: 'Cadastro bem sucedido.',
+                body: `Uma mensagem de verificação por email será enviada para ${
                   this.model.email
                 }`
               }
@@ -119,8 +119,8 @@ export class SignupOnlyComponent extends Extender implements OnInit {
           this.dialog.openAlert({
             data: {
               config: {
-                heading: 'Sign up Successful.',
-                body: `An email verification message will be sent to ${
+                heading: 'Cadastro bem sucedido.',
+                body: `Uma mensagem de verificação por email será enviada para ${
                   this.model.email
                 }`
               }

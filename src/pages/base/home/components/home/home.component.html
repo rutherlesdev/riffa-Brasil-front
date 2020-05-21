@@ -1,6 +1,6 @@
 <div class="bg gradient-bg">
-  <h2>Why buy it, when you can #winit</h2>
-  <p>Join thousands of players winning cash, cars, tech & holidays daily.</p>
+  <h2>Por que comprá-lo, quando você pode #Ganhar</h2>
+  <p>Junte-se a milhares de jogadores que ganham dinheiro, carros, iphones e viagens diariamente.</p>
   <ngb-carousel *ngIf="raffles && raffles.length > 0">
     <ng-template ngbSlide *ngFor="let item of raffles | orderBy: '-createdAt'">
       <div class="featured-product">
@@ -15,11 +15,11 @@
           </span>
 
           <small
-            class="my-2">{{(item.product.description | slice: 0: 100) + '...' || 'No Description for this raffle'}}</small>
+            class="my-2">{{(item.product.description | slice: 0: 100) + '...' || 'Nenhuma descrição para esta rifa'}}</small>
           <hr class="my-1">
-          <h6 class="mb-2">Raffle ends {{item.endDate | amTimeAgo}}</h6>
+          <h6 class="mb-2">Sorteio termina{{item.endDate | amTimeAgo}}</h6>
 
-          <span class="btn btn-primary mt-2" (click)="gotoPage(routes.live + '/' + item.id)" angulartics2On="click" angularticsAction="ViewRaffle" angularticsLabel="PlayNowButton" [angularticsCategory]="'FeaturedSlider'">Play Now</span>
+          <span class="btn btn-primary mt-2" (click)="gotoPage(routes.live + '/' + item.id)" angulartics2On="click" angularticsAction="ViewRaffle" angularticsLabel="PlayNowButton" [angularticsCategory]="'FeaturedSlider'">Jogue agora</span>
         </div>
       </div>
     </ng-template>

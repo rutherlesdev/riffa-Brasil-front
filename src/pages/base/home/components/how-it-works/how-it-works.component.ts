@@ -8,11 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class HowItWorksComponent implements OnInit {
 
   public items: any[] = [
-    'Pick a Competition you want to enter',
-    'Choose how many numbers you would like in the raffle',
-    'Dont see your number, try the Lucky Dip button',
-    'Review & Complete Payment',
-    'Sit back and wait for the raffle to complete. Our AI system will automatically choose the winner and notify you whether you won or not.'
+    'Escolha um sorteio que você deseja participar',
+    'Escolha quantos números você gostaria no sorteio',
+    "Não vê seu número, tente o botão Seleção aleatória",
+    "Revisão e pagamento completo",
+    'Sente-se e aguarde o sorteio terminar. Nosso sistema de identificará automaticamente o vencedor e o notificará se você ganhou ou não. '
   ];
   constructor() { }
 

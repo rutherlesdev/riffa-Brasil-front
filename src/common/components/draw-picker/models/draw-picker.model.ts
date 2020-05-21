@@ -11,6 +11,13 @@ export class DrawPickerEntries {
     public user: Account,
     private _numbers: { column: number, value: number, status?: DrawEntryStatus }[] = [],
   ) {
+
+console.log(Number)
+console.log(_numbers)
+console.log(_numbers.values)
+
+
+
     if (_numbers.length > 0) {
       return;
     }

@@ -11,7 +11,7 @@ export class CustomCurrencyPipe implements PipeTransform {
   ) { }
 
   public transform(value: any, args?: any): any {
-    return this.currency.transform(value, 'GBP', 'symbol', '0.0-0');
+    return this.currency.transform(value, 'BRL', 'symbol', '1.2-2');
   }
 
 }

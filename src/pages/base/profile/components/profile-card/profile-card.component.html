@@ -3,22 +3,22 @@
   <div class="card-body">
     <h5 class="card-title">{{(contact.title || '') + ' ' + contact.firstName + ' ' + contact.lastName}}</h5>
     <p class="card-text">
-      {{contact?.bio || 'You do not have a bio set. go to profile edit page to setup your bio'}}
+      {{contact?.bio || 'Você não tem um conjunto de bio. vá para a página de edição de perfil para configurar sua biografia'}}
     </p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"><i class="fa fa-envelope"></i> {{contact.email || 'No Email address'}}</li>
-    <li class="list-group-item"><i class="fa fa-phone"></i> {{contact.phone || 'No phone number'}}</li>
+    <li class="list-group-item"><i class="fa fa-envelope"></i> {{contact.email || 'Sem email'}}</li>
+    <li class="list-group-item"><i class="fa fa-phone"></i> {{contact.phone || 'Sem telefone'}}</li>
     <li class="list-group-item">
       <i class="fa fa-home"></i>
-      {{contact.address || 'No Street Address'}} <br>
-      {{contact.town || 'No City data'}}<br>
-      {{contact.postalCode || 'No Postalcode data'}}<br>
-      {{contact.country || 'No country selected'}}<br>
+      {{contact.address || 'Sem endereço'}} <br>
+      {{contact.town || 'Sem Cidade'}}<br>
+      {{contact.postalCode || 'Sem código postal'}}<br>
+      {{contact.country || 'Sem País'}}<br>
     </li>
   </ul>
   <div class="card-body">
-    <a (click)="openEdit()" class="card-link text-primary pointer">Edit Profile</a>
+    <a (click)="openEdit()" class="card-link text-primary pointer">Editar Perfil</a>
     <!-- <a href="#" class="card-link">Another link</a> -->
   </div>
 </div>

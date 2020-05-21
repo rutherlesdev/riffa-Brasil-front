@@ -10,7 +10,7 @@
   <form #form="ngForm" (ngSubmit)="register()">
 
     <div class="promo" *ngIf="promo">
-      Sign up and get £5 off your next purchase
+      Inscreva-se e receba R$ 5 de desconto na sua próxima compra
     </div>
 
     <div class="row">
@@ -18,7 +18,7 @@
         <form-field label="Firstname" size="lg">
           <input inputRef name="firstname" #firstname="ngModel" required [(ngModel)]="model.firstName">
           <div invalid *ngIf="firstname.touched && firstname.invalid">
-            <p *ngIf="firstname?.errors.required">required</p>
+            <p *ngIf="firstname?.errors.required">requerido</p>
           </div>
         </form-field>
       </div>
@@ -26,7 +26,7 @@
         <form-field label="Lastname" size="lg">
           <input inputRef name="lastname" #lastname="ngModel" required [(ngModel)]="model.lastName">
           <div invalid *ngIf="lastname.touched && lastname.invalid">
-            <p *ngIf="lastname?.errors.required">required</p>
+            <p *ngIf="lastname?.errors.required">requerido</p>
           </div>
         </form-field>
       </div>
@@ -34,8 +34,8 @@
     <form-field label="Email" size="lg">
       <input inputRef type="email" name="email" #email="ngModel" email required [(ngModel)]="model.email">
       <div invalid *ngIf="email.touched && email.invalid">
-        <p *ngIf="email?.errors.required">required</p>
-        <p *ngIf="email?.errors.required">enter a valid email</p>
+        <p *ngIf="email?.errors.required">requerido</p>
+        <p *ngIf="email?.errors.required">entre com um email válido</p>
       </div>
     </form-field>
 
@@ -47,7 +47,7 @@
       </div>
       <div invalid *ngIf="password.touched && password.invalid">
         <p *ngIf="password?.errors.required">required</p>
-        <p *ngIf="password?.errors.secure || password?.errors.invalid">password is not secure</p>
+        <p *ngIf="password?.errors.secure || password?.errors.invalid">Essa senha não é segura</p>
       </div>
     </form-field>
 

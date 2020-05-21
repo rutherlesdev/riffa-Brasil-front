@@ -24,12 +24,12 @@
   height: 9em;
   margin: 20px 0;
   border-radius: 50%;
-  background: map-get($theme-colors, primary);
-  background: -moz-linear-gradient(left, map-get($theme-colors, primary) 10%, rgba(255, 255, 255, 0) 42%);
-  background: -webkit-linear-gradient(left, map-get($theme-colors, primary) 10%, rgba(255, 255, 255, 0) 42%);
-  background: -o-linear-gradient(left, map-get($theme-colors, primary) 10%, rgba(255, 255, 255, 0) 42%);
-  background: -ms-linear-gradient(left, map-get($theme-colors, primary) 10%, rgba(255, 255, 255, 0) 42%);
-  background: linear-gradient(to right, map-get($theme-colors, primary) 10%, rgba(255, 255, 255, 0) 42%);
+  background: map-get($theme-colors, red);
+  background: -moz-linear-gradient(left, map-get($theme-colors, red) 10%, rgba(255, 255, 255, 0) 42%);
+  background: -webkit-linear-gradient(left, map-get($theme-colors, red) 10%, rgba(255, 255, 255, 0) 42%);
+  background: -o-linear-gradient(left, map-get($theme-colors, red) 10%, rgba(255, 255, 255, 0) 42%);
+  background: -ms-linear-gradient(left, map-get($theme-colors, red) 10%, rgba(255, 255, 255, 0) 42%);
+  background: linear-gradient(to right, map-get($theme-colors, red) 10%, rgba(255, 255, 255, 0) 42%);
   position: relative;
   -webkit-animation: load3 1.4s infinite linear;
   animation: load3 1.4s infinite linear;

@@ -9,32 +9,32 @@
     <form-field label="Email" size="lg">
       <input inputRef type="email" name="email" #email="ngModel" email required [(ngModel)]="model.email">
       <div invalid *ngIf="email.touched && email.invalid">
-        <p *ngIf="email?.errors.required">required</p>
-        <p *ngIf="email?.errors.required">enter a valid email</p>
+        <p *ngIf="email?.errors.required">requerido</p>
+        <p *ngIf="email?.errors.required">Entre com um email válido</p>
       </div>
     </form-field>
 
     <form-field label="Password" size="lg">
       <input inputRef type="password" name="password" #password="ngModel" required [(ngModel)]="model.password">
       <div invalid *ngIf="password.touched && password.invalid">
-        <p *ngIf="password?.errors.required">required</p>
+        <p *ngIf="password?.errors.required">requeridos</p>
       </div>
     </form-field>
 
     <div class="call-to-action">
       <button type="submit" [btnStatus]="loading" class="btn btn-primary btn-lg" (click)="login()" angulartics2On="click" angularticsAction="SignIn" angularticsLabel="SignInButton" [angularticsCategory]="'SignInPopup'">Sign In</button>
 
-      <small class="options"> or you can sign in with</small>
+      <small class="options"> ou você pode entrar com</small>
 
       <button type="button" [btnStatus]="authProps.fbLoading" class="btn btn-facebook btn-lg"
         (click)="authProps.fbLogin()" angulartics2On="click" angularticsAction="SignIn" angularticsLabel="SignInButtonFacebook" [angularticsCategory]="'SignInPopup'">Facebook</button>
       <button type="button" [btnStatus]="authProps.googleLoading" class="btn btn-google btn-lg"
         (click)="authProps.googleLogin()" angulartics2On="click" angularticsAction="SignIn" angularticsLabel="SignUpButtonGmail" [angularticsCategory]="'SignInPopup'">Google</button>
 
-      <small class="options pointer" (click)="forgot()">Forgot Password? </small>
+      <small class="options pointer" (click)="forgot()">Esqueceu a senha? </small>
 
-      <div class="options"> Dont have an account?
-        <strong class="text-lg text-primary pointer" (click)="signup()" angulartics2On="click" angularticsAction="SignUp" angularticsLabel="SignUpLink" [angularticsCategory]="'SignInPopup'">Sign up</strong>
+      <div class="options"> Não possui uma conta?
+        <strong class="text-lg text-primary pointer" (click)="signup()" angulartics2On="click" angularticsAction="SignUp" angularticsLabel="SignUpLink" [angularticsCategory]="'SignInPopup'">Cadastre-se</strong>
       </div>
     </div>
   </form>

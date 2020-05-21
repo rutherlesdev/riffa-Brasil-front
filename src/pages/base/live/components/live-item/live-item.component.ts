@@ -102,33 +102,21 @@ export class LiveItemComponent extends Extender implements OnInit, OnDestroy {
         .openAlert({
           data: {
             config: {
-              body: `You have chosen the following numbers for ${
-                this.raffle.name
-              } draw`,
-              footer: `<h4>${this.userEntries
-                .filter(
-                  (obj) =>
-                    this.entries
-                      .map((entry) => entry.entryNumber)
-                      .indexOf(obj) === -1
-                )
-                .map(
-                  (element) =>
-                    '<strong class="p-2 mx-2 badge badge-primary">' +
-                    element +
-                    '</strong>'
-                )} </h4>`
+              body: ` Parabéns Você escolheu os números para ${this.raffle.name} Rifa`,
+              footer: `<h4> 
+                
+                 </h4>`
             },
             buttons: {
               buttons: [
                 {
                   color: 'outline-danger',
-                  text: 'Cancel',
+                  text: 'Cancelar',
                   eventname: 'close'
                 },
                 {
                   color: 'secondary',
-                  text: 'Go to Payment',
+                  text: 'Pagar',
                   eventname: 'payment'
                 }
               ]
@@ -223,6 +211,6 @@ export class LiveItemComponent extends Extender implements OnInit, OnDestroy {
   }
 
   private generateRandomNumber(end) {
-    return Math.floor(Math.random() * end) + 1;
+    return Math.floor(Math.random() * end) + 1 ;
   }
 }
