@@ -29,32 +29,32 @@ export class CurrentWagersComponent extends Extender implements OnInit {
   public tableHeaders: ITableHeader[] = [
     {
       text: 'raffleDraw.name',
-      formatted_text: 'Raffle',
+      formatted_text: 'Rafias',
       type: 'text',
     },
     {
       text: 'entryNumber',
-      formatted_text: 'Entry No',
+      formatted_text: 'Seus números',
       type: 'badge:primary',
     },
     {
       text: 'isLuckyDip',
-      formatted_text: 'Is Luck Dip',
+      formatted_text: '',
       type: 'boolean',
     },
     {
       text: 'raffleDraw.price',
-      formatted_text: 'Price',
+      formatted_text: 'Valor',
       type: 'currency',
     },
     {
       text: 'raffleDraw.startDate',
-      formatted_text: 'Start',
+      formatted_text: 'Início',
       type: 'date:short',
     },
     {
       text: 'raffleDraw.endDate',
-      formatted_text: 'End',
+      formatted_text: 'Fim',
       type: 'date:dd/MM/yyyy',
     },
   ];

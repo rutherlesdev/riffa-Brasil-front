@@ -183,10 +183,10 @@ export class PaymentComponent extends Extender implements OnInit {
                 this.dialog.openAlert({
                   data: {
                     config: {
-                      heading: 'Payment Successful',
-                      body: `You have successfuly made a payment of ${this._currency.transform(
+                      heading: 'Pagamento bem sucedido',
+                      body: `Você efetuou um pagamento de ${this._currency.transform(
                         this.amount
-                      )} for ${this.raffleEntries.length} raffle tickets`
+                      )} for ${this.raffleEntries.length} Rifas`
                     }
                   }
                 });
