@@ -66,7 +66,7 @@ export class Payment implements PaymentInterface {
         "currency": {
           name: 'currency',
           type: 'string',
-          default: 'gbp'
+          default: 'brl'
         },
         "createdAt": {
           name: 'createdAt',

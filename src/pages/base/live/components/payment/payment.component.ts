@@ -159,7 +159,7 @@ export class PaymentComponent extends Extender implements OnInit {
     this._paymentApi
       .start({
         amount: this.amount * 100,
-        currency: 'gbp'
+        currency: 'brl'
       })
       .subscribe(
         (res) => {

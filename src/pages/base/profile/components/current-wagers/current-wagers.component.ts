@@ -29,7 +29,7 @@ export class CurrentWagersComponent extends Extender implements OnInit {
   public tableHeaders: ITableHeader[] = [
     {
       text: 'raffleDraw.name',
-      formatted_text: 'Rafias',
+      formatted_text: 'Rifas',
       type: 'text',
     },
     {
@@ -38,7 +38,7 @@ export class CurrentWagersComponent extends Extender implements OnInit {
       type: 'badge:primary',
     },
     {
-      text: 'isLuckyDip',
+      text: 'Seleção aleatória',
       formatted_text: '',
       type: 'boolean',
     },
