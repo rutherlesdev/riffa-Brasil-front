@@ -7,7 +7,7 @@ import {
 export const environment = {
   production: true,
   server: {
-    BASE_URL: 'https://rifabackend.herokuapp.com/',
+    BASE_URL: 'https://rifabackend.herokuapp.com',
     API_VERSION: 'api'
   },
   STRIPE_PUB_KEY: 'pk_test_wVF8GCkZsYQzLhxspVd0ExcC00b6i5qRHD',
