@@ -15,12 +15,12 @@ export const environment = {
     {
       id: GoogleLoginProvider.PROVIDER_ID,
       provider: new GoogleLoginProvider(
-        'GOOGLE LOGIN STRING'
+        '481790541490-aulbm0n7snhljbgd765nt8nvbsmcaa86.apps.googleusercontent.com'
       )
     },
     {
       id: FacebookLoginProvider.PROVIDER_ID,
-      provider: new FacebookLoginProvider('FACEBOOK LOGIN STRING')
+      provider: new FacebookLoginProvider('668074910649594')
     }
   ]),
   piwikServer: 'CUSTOM MATOMO ANALYTICS STRING'
