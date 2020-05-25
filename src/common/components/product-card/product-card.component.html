@@ -6,7 +6,7 @@
   <div class="card-body">
     <h5 class="card-title">{{raffle?.product?.name || 'Unknown'}}</h5>
     <div class="card-text my-3" *ngIf="startDate <= today">
-      <small class="mb-1">A rifa termina em {{raffle.endDate | amTimeAgo}}</small>
+      
       <app-progress-bar *ngIf="entriesLeft" class="my-2" [value]="entriesLeft"
         text="{{entriesLeft}} raffle entires left">
       </app-progress-bar>
@@ -18,7 +18,6 @@
     </div>
 
     <div class="card-text my-3" *ngIf="startDate > today">
-      <small class="mb-1">Raffle starts {{raffle.startDate | amTimeAgo}}</small>
       <!--
       <app-progress-bar class="mb-2" [value]="timeElapsed"></app-progress-bar> -->
       <span class="my-3 price">
