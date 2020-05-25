@@ -10,7 +10,7 @@ export const environment = {
     BASE_URL: 'https://rifabackend.herokuapp.com',
     API_VERSION: 'api'
   },
-  STRIPE_PUB_KEY: 'pk_test_wVF8GCkZsYQzLhxspVd0ExcC00b6i5qRHD',
+  STRIPE_PUB_KEY: 'pk_live_6HAtJMePHi3XDZRRXWuF8ROD00Dl7WgCfO',
   AUTH_CONFIG: new AuthServiceConfig([
     {
       id: GoogleLoginProvider.PROVIDER_ID,
